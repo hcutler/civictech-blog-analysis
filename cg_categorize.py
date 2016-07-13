@@ -11,7 +11,7 @@ pp = pprint.PrettyPrinter(indent=4)
 
     
 myText = ""
-with open("cg_partial.csv", "r") as file:
+with open("cg_entities_and_descr.csv", "r") as file:
   data = file.read()
   myText = data.split()
   print type(myText)

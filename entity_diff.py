@@ -1,17 +1,13 @@
-
-# from alchemyapi import AlchemyAPI
 import json
 import pprint
 
 
-# alchemyapi = AlchemyAPI()
-
-pp = pprint.PrettyPrinter(indent=4)
-
 # ff8f993db5ee0b907a3e41f19bbd57b8b4cbc24a
 pp = pprint.PrettyPrinter(indent=4)
 
-b_not_g = []
+graph = []
+blog = []
+both = []
 
 with open("cg_entities.csv", "r") as file1:
   graph = file1.read().split('\n')
@@ -19,17 +15,36 @@ with open("cg_entities.csv", "r") as file1:
 with open("blog_entities.csv", "r") as file2:  
   blog = file2.read().split('\n')
 
-for i in range(0, len(blog)):
-  for j in range(1, len(graph)):
-    if blog[i] == graph[j]:
-      b_not_g.append(blog[i])
-    else:
-      continue
+with open("both.csv", "r") as file3:
+  both = file3.read().split('\n')
 
-bNg_set = set(b_not_g)
+blog_set = set(blog)
+both_set = set(both)
 
-for x in bNg_set:
-  print x
+bNOTg = list(blog_set - both_set)
+
+# print "\n# of entities extracted from blog content that are not in Civic Graph: \n", len(bNOTg), "\n"
+
+# print "Entities extracted from blog content not in Civic Graph:"
+
+# for x in bNOTg:
+#   print x
+
+with open("blog_not_graph.csv", "w") as f:
+  for x in bNOTg:
+    f.write(x + '\n')
+
+# for i in range(0, len(blog)):
+#   for j in range(1, len(graph)):
+#     if blog[i] == graph[j]:
+#       b_not_g.append(blog[i])
+#     else:
+#       continue
+
+# bNg_set = set(b_not_g)
+
+# for x in bNg_set:
+#   print x
 
 
 

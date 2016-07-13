@@ -9,5 +9,8 @@ d2 <- data.frame(graph)
 
 both <- join(d1, d2, by = "Name",type = "inner", match = "all")
 
-write.csv(both, "both.csv", row.names = FALSE, quote=FALSE))
+write.csv(both, "both.csv", row.names = FALSE, quote=FALSE)
+
+bNOTg <- read.csv("blog_not_graph.csv", sep=",")
+d3 <- data.frame(bNOTg)
 
